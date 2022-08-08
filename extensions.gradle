@@ -17,6 +17,7 @@ allprojects {
         mppJavaProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJavaProject.gradle"
         mppJsProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJsProject.gradle"
         mppAndroidProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppAndroidProject.gradle"
+        mppJavaJsProjectPresetPath = "${rootProject.projectDir.absolutePath}/mppJavaJsWithSerialization.gradle"
 
         defaultAndroidSettingsPresetPath = "${rootProject.projectDir.absolutePath}/defaultAndroidSettings.gradle"
 

@@ -1,7 +1,9 @@
-rootProject.name = 'project_name'
+rootProject.name = 'resume'
 
 String[] includes = [
-    ":lib"
+    ":common",
+    ":server",
+    ":client"
 ]
 
 
