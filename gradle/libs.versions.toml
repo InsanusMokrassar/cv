@@ -1,9 +1,11 @@
 [versions]
 
-kotlin = "1.7.10"
+kotlin = "1.7.0"
 kotlin-serialization = "1.4.0-RC"
 
 compose = "1.2.0-alpha01-dev753"
+
+kslog = "0.5.0"
 
 dexcount = "3.1.0"
 junit_version = "4.12"
@@ -33,6 +35,8 @@ android-dexcount = { module = "com.getkeepsafe.dexcount:dexcount-gradle-plugin",
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+
+kslog = { module = "dev.inmo:kslog", version.ref = "kslog" }
 
 [plugins]
 

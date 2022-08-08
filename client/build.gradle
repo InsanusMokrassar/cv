@@ -7,9 +7,15 @@ plugins {
 apply from: "$mppJsProjectPresetPath"
 
 kotlin {
+    js (IR) {
+        browser {
+            binaries.executable()
+        }
+    }
     sourceSets {
         commonMain {
             dependencies {
+                implementation project(":resume.common")
                 implementation compose.runtime
             }
         }

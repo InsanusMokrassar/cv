@@ -5,3 +5,13 @@ plugins {
 
 apply from: "$mppJavaJsProjectPresetPath"
 
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                api libs.kslog
+            }
+        }
+    }
+}
+
