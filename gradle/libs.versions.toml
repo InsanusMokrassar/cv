@@ -6,6 +6,7 @@ kotlin-serialization = "1.4.0-RC"
 compose = "1.2.0-alpha01-dev753"
 
 kslog = "0.5.0"
+kjsuikit = "0.2.0"
 
 dexcount = "3.1.0"
 junit_version = "4.12"
@@ -37,6 +38,7 @@ kotlin-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serializat
 kotlin-dokka-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
 
 kslog = { module = "dev.inmo:kslog", version.ref = "kslog" }
+kjsuikit = { module = "dev.inmo:kjsuikit", version.ref = "kjsuikit" }
 
 [plugins]
 

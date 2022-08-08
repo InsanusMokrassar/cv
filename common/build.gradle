@@ -12,6 +12,11 @@ kotlin {
                 api libs.kslog
             }
         }
+        jsMain {
+            dependencies {
+                api libs.kjsuikit
+            }
+        }
     }
 }
 
