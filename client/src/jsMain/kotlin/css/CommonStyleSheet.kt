@@ -19,12 +19,12 @@ object CommonStyleSheet : StyleSheet() {
     }
 
     val primaryElement by style {
-        backgroundColor(ThemeStyleSheet.backgroundPrimaryColor.value())
+        backgroundColor(ThemeStyleSheet.primaryColor.value())
         color(ThemeStyleSheet.primaryTextColor.value())
     }
 
     val secondaryElement by style {
-        backgroundColor(ThemeStyleSheet.backgroundSecondaryColor.value())
+        backgroundColor(ThemeStyleSheet.secondaryColor.value())
         color(ThemeStyleSheet.secondaryTextColor.value())
     }
 

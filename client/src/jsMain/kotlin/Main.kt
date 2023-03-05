@@ -16,28 +16,60 @@ fun main() {
         globalLogger.i("Hello! All the logs made with my library KSLog. You may find sources of that library here: https://github.com/InsanusMokrassar/KSLog")
         val darkMode = mutableStateOf(false)
         renderComposableInBody {
+            Style(ThemeStyleSheet(true))
             Style(if (darkMode.value) ThemeStyleSheet.DARK else ThemeStyleSheet.LIGHT)
             Style(CommonStyleSheet)
             Style(AnchorStyleSheet)
+            Style(HeaderStyleSheet)
 
             AnchorContainer(
                 headerBuilder = {
                     Div({
-                        onClick { darkMode.value = !darkMode.value }
-                        classes(CommonStyleSheet.cursorPointer)
-                        if (darkMode.value) classes(CommonStyleSheet.activeClass)
+                        classes(HeaderStyleSheet.container)
                     }) {
-                        Text("Dark mode")
+                        Div({
+                            if (darkMode.value) classes(CommonStyleSheet.activeClass)
+                            onClick { darkMode.value = !darkMode.value }
+                            classes(CommonStyleSheet.cursorPointer, HeaderStyleSheet.element, CommonStyleSheet.secondaryElement)
+                        }) {
+                            Text("Dark mode")
+                        }
+                        Div({
+                            classes(HeaderStyleSheet.element, CommonStyleSheet.secondaryElement)
+                        }) {
+                            Text("Projects")
+                        }
+                        Div({
+                            classes(HeaderStyleSheet.element, CommonStyleSheet.secondaryElement)
+                        }) {
+                            Text("Works")
+                        }
+                        Div({
+                            classes(HeaderStyleSheet.element, CommonStyleSheet.secondaryElement)
+                        }) {
+                            Text("Education")
+                        }
                     }
+                },
+                leftBuilder = {
                     Div({
-                        classes(CommonStyleSheet.primaryElement)
+                        classes()
                     }) {
-                        Text("Sample primary")
+                        Text("Left")
                     }
+                },
+                centerBuilder = {
                     Div({
-                        classes(CommonStyleSheet.secondaryElement)
+                        classes()
                     }) {
-                        Text("Sample secondary")
+                        Text("Center")
+                    }
+                },
+                rightBuilder = {
+                    Div({
+                        classes()
+                    }) {
+                        Text("Right")
                     }
                 }
             )

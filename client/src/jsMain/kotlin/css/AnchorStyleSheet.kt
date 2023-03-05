@@ -1,6 +1,8 @@
 package dev.inmo.resume.client.css
 
+import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.StyleSheet
+import org.jetbrains.compose.web.css.display
 
 object AnchorStyleSheet : StyleSheet() {
     val container by style {
@@ -10,6 +12,7 @@ object AnchorStyleSheet : StyleSheet() {
         CommonStyleSheet.Width.expand(this)
     }
     val middle by style {
+        display(DisplayStyle.Flex)
         CommonStyleSheet.Width.expand(this)
     }
     val leftSide by style {
