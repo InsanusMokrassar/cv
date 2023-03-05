@@ -5,6 +5,7 @@ buildscript {
         mavenLocal()
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://maven.pkg.jetbrains.space/public/p/compose/dev" }
+        maven { url "https://git.inmo.dev/api/packages/InsanusMokrassar/maven" }
     }
 
     dependencies {
@@ -22,6 +23,7 @@ allprojects {
         mavenCentral()
         google()
         maven { url "https://maven.pkg.jetbrains.space/public/p/compose/dev" }
+        maven { url "https://git.inmo.dev/api/packages/InsanusMokrassar/maven" }
     }
 }
 
