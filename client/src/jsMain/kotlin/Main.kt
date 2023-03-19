@@ -32,8 +32,8 @@ private fun HeaderElement(
     onClick: () -> Unit
 ) {
     Div({
-        if (isActive) classes(CommonStyleSheet.activeClass)
-        classes(CommonStyleSheet.cursorPointer, HeaderStyleSheet.element, CommonStyleSheet.secondaryElement)
+        if (isActive) classes(CommonStyleSheet.primaryElement) else classes(CommonStyleSheet.secondaryElement)
+        classes(CommonStyleSheet.cursorPointer, HeaderStyleSheet.element)
         onClick { onClick() }
     }) {
         Text(title)
@@ -61,7 +61,6 @@ fun main() {
         val centerDrawer = mutableStateOf<Drawer>(meDrawer)
 
         renderComposableInBody {
-            Style(ThemeStyleSheet(true))
             Style(if (darkMode.value) ThemeStyleSheet.DARK else ThemeStyleSheet.LIGHT)
             Style(CommonStyleSheet)
             Style(CommonStyleSheet.Width)

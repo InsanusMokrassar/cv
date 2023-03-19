@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import dev.inmo.resume.client.utils.ExtraSmallScreen
 import dev.inmo.resume.client.utils.styleOn
 import org.jetbrains.compose.web.css.AlignItems
+import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.JustifyContent
@@ -17,9 +18,11 @@ import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexDirection
 import org.jetbrains.compose.web.css.flexGrow
 import org.jetbrains.compose.web.css.justifyContent
+import org.jetbrains.compose.web.css.margin
 import org.jetbrains.compose.web.css.not
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgba
 import org.jetbrains.compose.web.css.style
 import org.jetbrains.compose.web.css.textAlign
 import org.jetbrains.compose.web.css.value
@@ -29,7 +32,7 @@ object HeaderStyleSheet : StyleSheet() {
     var headerElementBorderWidth = mutableStateOf(2.px)
     var headerElementBorderIntermediateWidth = mutableStateOf(1.px)
     var headerElementBorderRadius = mutableStateOf(5.px)
-    val headerElementBorderColor = ThemeStyleSheet.primaryColor
+    val headerElementBorderColor = Color.transparent
 
     val container by style {
         display(DisplayStyle.Flex)
@@ -49,8 +52,13 @@ object HeaderStyleSheet : StyleSheet() {
 
         border {
             style(LineStyle.Solid)
-            this.color = headerElementBorderColor.value()
+            this.color = headerElementBorderColor
             width(0.px)
+        }
+
+        styleOn(ExtraSmallScreen) {
+            margin(1.px, 4.px)
+            borderRadius(2.px)
         }
 
         styleOn(not(ExtraSmallScreen)) {
