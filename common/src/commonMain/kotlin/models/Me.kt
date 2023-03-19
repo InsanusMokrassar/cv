@@ -1,4 +1,4 @@
-package dev.inmo.resume.client.models
+package dev.inmo.resume.common.models
 
 import kotlinx.serialization.Serializable
 

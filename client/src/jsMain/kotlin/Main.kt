@@ -12,7 +12,7 @@ import dev.inmo.resume.client.drawers.H1Drawer
 import dev.inmo.resume.client.drawers.ListDrawer
 import dev.inmo.resume.client.drawers.MeDrawer
 import dev.inmo.resume.client.drawers.ProjectDrawer
-import dev.inmo.resume.client.models.Info
+import dev.inmo.resume.common.models.Info
 import dev.inmo.resume.client.utils.Drawer
 import dev.inmo.resume.common.globalLogger
 import kotlinx.browser.window
