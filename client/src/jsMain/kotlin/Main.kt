@@ -5,16 +5,20 @@ import androidx.compose.runtime.mutableStateOf
 import dev.inmo.kslog.common.i
 import dev.inmo.resume.client.containers.AnchorContainer
 import dev.inmo.resume.client.containers.Box
-import dev.inmo.resume.client.css.*
+import dev.inmo.resume.client.css.AnchorStyleSheet
+import dev.inmo.resume.client.css.CommonStyleSheet
+import dev.inmo.resume.client.css.HeaderStyleSheet
+import dev.inmo.resume.client.css.RootAnchorStyleSheet
+import dev.inmo.resume.client.css.ThemeStyleSheet
 import dev.inmo.resume.client.drawers.EducationDrawer
 import dev.inmo.resume.client.drawers.ExperienceDrawer
 import dev.inmo.resume.client.drawers.H1Drawer
 import dev.inmo.resume.client.drawers.ListDrawer
 import dev.inmo.resume.client.drawers.MeDrawer
 import dev.inmo.resume.client.drawers.ProjectDrawer
-import dev.inmo.resume.common.models.Info
 import dev.inmo.resume.client.utils.Drawer
 import dev.inmo.resume.common.globalLogger
+import dev.inmo.resume.common.models.Info
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.Style
 import org.jetbrains.compose.web.dom.Div
@@ -81,7 +85,7 @@ fun main() {
             AnchorContainer(
                 headerBuilder = {
                     Div({
-                        classes(HeaderStyleSheet.container)
+                        classes(CommonStyleSheet.Width.expand, HeaderStyleSheet.container, RootAnchorStyleSheet.header)
                     }) {
                         HeaderElement(
                             "Dark mode",
@@ -107,25 +111,11 @@ fun main() {
                         )
                     }
                 },
-                leftBuilder = {
-                    Div({
-                        classes()
-                    }) {
-                        Text("Left")
-                    }
-                },
                 centerBuilder = {
                     Box({
                         classes(RootAnchorStyleSheet.center)
                     }) {
                         centerDrawer.value()
-                    }
-                },
-                rightBuilder = {
-                    Div({
-                        classes()
-                    }) {
-                        Text("Right")
                     }
                 }
             )

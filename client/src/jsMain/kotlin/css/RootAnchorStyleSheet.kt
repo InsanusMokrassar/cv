@@ -1,35 +1,47 @@
 package dev.inmo.resume.client.css
 
-import dev.inmo.resume.client.utils.onLargeScreen
-import dev.inmo.resume.client.utils.styleOnExtraSmallScreen
-import dev.inmo.resume.client.utils.styleOnLargeScreen
-import dev.inmo.resume.client.utils.styleOnMediumScreen
-import dev.inmo.resume.client.utils.styleOnSmallScreen
-import org.jetbrains.compose.web.css.CSSNumeric
+import dev.inmo.resume.client.utils.ExtraSmallScreen
+import dev.inmo.resume.client.utils.LargeScreen
+import dev.inmo.resume.client.utils.MediumScreen
+import dev.inmo.resume.client.utils.SmallScreen
+import dev.inmo.resume.client.utils.styleOn
+import org.jetbrains.compose.web.css.CSSBuilder
 import org.jetbrains.compose.web.css.StyleSheet
-import org.jetbrains.compose.web.css.keywords.auto
 import org.jetbrains.compose.web.css.margin
-import org.jetbrains.compose.web.css.marginLeft
-import org.jetbrains.compose.web.css.maxWidth
-import org.jetbrains.compose.web.css.media
-import org.jetbrains.compose.web.css.mediaMinWidth
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.width
 
 object RootAnchorStyleSheet : StyleSheet() {
+    private val largeWidth = 768.px
+    private val mediumWidth = 640.px
+    private val smallWidth = 480.px
+    private val extraSmallWidth = 320.px
+    private fun CSSBuilder.includeCommonSizesPoints() {
+        styleOn(LargeScreen) {
+            width(largeWidth)
+        }
+        styleOn(MediumScreen) {
+            width(mediumWidth)
+        }
+    }
     val center by style {
         property("margin", "0 auto")
-        styleOnLargeScreen {
-            width(768.px)
+        includeCommonSizesPoints()
+        styleOn(SmallScreen) {
+            width(smallWidth)
         }
-        styleOnMediumScreen {
-            width(640.px)
+        styleOn(ExtraSmallScreen) {
+            width(extraSmallWidth)
         }
-        styleOnSmallScreen {
-            width(480.px)
+    }
+    val header by style {
+        property("margin", "0 auto")
+        includeCommonSizesPoints()
+        styleOn(SmallScreen) {
+            margin(0.px, 16.px)
         }
-        styleOnExtraSmallScreen {
-            width(320.px)
+        styleOn(ExtraSmallScreen) {
+            margin(0.px)
         }
     }
 }

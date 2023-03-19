@@ -1,6 +1,10 @@
 package dev.inmo.resume.client.css
 
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.CSSColorValue
+import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.StyleSheet
+import org.jetbrains.compose.web.css.rgb
+import org.jetbrains.compose.web.css.variable
 
 class ThemeStyleSheet(darkTheme: Boolean) : StyleSheet() {
     init {

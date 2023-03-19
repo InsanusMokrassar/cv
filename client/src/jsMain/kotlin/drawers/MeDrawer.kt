@@ -2,8 +2,8 @@ package dev.inmo.resume.client.drawers
 
 import androidx.compose.runtime.Composable
 import dev.inmo.resume.client.containers.AnchorContainer
-import dev.inmo.resume.common.models.Me
 import dev.inmo.resume.client.utils.Drawer
+import dev.inmo.resume.common.models.Me
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.H2

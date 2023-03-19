@@ -1,6 +1,13 @@
 package dev.inmo.resume.client.css
 
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.StyleSheet
+import org.jetbrains.compose.web.css.backgroundColor
+import org.jetbrains.compose.web.css.color
+import org.jetbrains.compose.web.css.cursor
+import org.jetbrains.compose.web.css.flex
+import org.jetbrains.compose.web.css.margin
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.value
 
 object CommonStyleSheet : StyleSheet() {
     object Width : StyleSheet() {
