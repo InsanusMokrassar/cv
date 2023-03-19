@@ -2,6 +2,10 @@ package dev.inmo.resume.client.css
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import dev.inmo.resume.client.utils.onLargeScreen
+import dev.inmo.resume.client.utils.onMediumScreen
+import dev.inmo.resume.client.utils.styleOnLargeScreen
+import dev.inmo.resume.client.utils.styleOnMediumScreen
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -16,10 +20,12 @@ import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.flexGrow
 import org.jetbrains.compose.web.css.justifyContent
+import org.jetbrains.compose.web.css.minWidth
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.selectors.CSSSelector
 import org.jetbrains.compose.web.css.style
+import org.jetbrains.compose.web.css.textAlign
 import org.jetbrains.compose.web.css.value
 import org.jetbrains.compose.web.css.width
 
@@ -31,6 +37,14 @@ object HeaderStyleSheet : StyleSheet() {
     }
     val element by style {
         padding(4.px)
+        textAlign("center")
+        styleOnLargeScreen {
+            minWidth(124.px)
+        }
+        styleOnMediumScreen {
+            minWidth(124.px)
+        }
+
     }
     var headerElementBorderWidth = mutableStateOf(2.px)
     var headerElementBorderIntermediateWidth = mutableStateOf(1.px)

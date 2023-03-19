@@ -3,10 +3,11 @@ package dev.inmo.resume.client.css
 import org.jetbrains.compose.web.css.*
 
 object CommonStyleSheet : StyleSheet() {
-    object Width {
-        val expand = CSSTemplate {
+    object Width : StyleSheet() {
+        val expandTemplate = CSSTemplate {
             flex(1)
         }
+        val expand by style(expandTemplate)
     }
 
     val activeClass by style {
@@ -30,8 +31,12 @@ object CommonStyleSheet : StyleSheet() {
 
     init {
         root style {
-            backgroundColor(ThemeStyleSheet.backgroundPrimaryColor.value())
-            color(ThemeStyleSheet.primaryTextColor.value())
+            backgroundColor(ThemeStyleSheet.backgroundNeutralColor.value())
+            color(ThemeStyleSheet.neutralTextColor.value())
+        }
+
+        selector("body") style {
+            margin(0.px)
         }
     }
 }

@@ -13,4 +13,10 @@ jobs:
         with:
           java-version: 11
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew jsBrowserProductionWebpack
+      - name: Publish CV
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/build/distributions
+          publish_branch: cv
