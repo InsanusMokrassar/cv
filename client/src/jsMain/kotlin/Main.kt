@@ -10,16 +10,14 @@ import dev.inmo.resume.client.css.CommonStyleSheet
 import dev.inmo.resume.client.css.HeaderStyleSheet
 import dev.inmo.resume.client.css.RootAnchorStyleSheet
 import dev.inmo.resume.client.css.ThemeStyleSheet
-import dev.inmo.resume.client.drawers.EducationDrawer
-import dev.inmo.resume.client.drawers.ExperienceDrawer
-import dev.inmo.resume.client.drawers.H1Drawer
-import dev.inmo.resume.client.drawers.ListDrawer
-import dev.inmo.resume.client.drawers.MeDrawer
-import dev.inmo.resume.client.drawers.ProjectDrawer
+import dev.inmo.resume.client.drawers.*
 import dev.inmo.resume.client.utils.Drawer
 import dev.inmo.resume.common.globalLogger
 import dev.inmo.resume.common.models.Info
 import kotlinx.browser.window
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import org.jetbrains.compose.web.css.Style
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
@@ -55,6 +53,11 @@ fun main() {
     val projectsDrawer = ListDrawer(
         listOf(H1Drawer("My projects")) + info.projects.map { ProjectDrawer(it) }
     )
+    val githubDrawer = info.github ?.let {
+        ListDrawer(
+            listOf(H1Drawer("My Github projects")) + GithubDrawer(it, CoroutineScope(Dispatchers.Default + SupervisorJob()))
+        )
+    }
     window.onload = {
         globalLogger.i("Hello! All the logs made with my library KSLog. You may find sources of that library here: https://github.com/InsanusMokrassar/KSLog")
         val darkMode = mutableStateOf(false)
@@ -108,6 +111,12 @@ fun main() {
                             "Education",
                             educationDrawer
                         )
+                        githubDrawer ?.let {
+                            HeaderDrawerElement(
+                                "Github",
+                                it
+                            )
+                        }
                     }
                 },
                 centerBuilder = {

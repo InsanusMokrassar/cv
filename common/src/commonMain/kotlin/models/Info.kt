@@ -128,5 +128,8 @@ data class Info(
             link = "https://github.com/InsanusMokrassar/TelegramBotAPI",
             description = "Wrapper library for Telegram Bots API written in kotlin multiplatform"
         )
+    ),
+    val github: Github? = Github(
+        "InsanusMokrassar"
     )
 )
