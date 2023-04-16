@@ -41,27 +41,56 @@ private fun HeaderElement(
 fun main() {
     val info = Info()
 
-    val experienceDrawer = ListDrawer(
-        listOf(H1Drawer("Experience")) + info.experience.map { ExperienceDrawer(it) }
+//    val experienceDrawer = ListDrawer(
+//        listOf(H1Drawer("Experience")) + info.experience.map { ExperienceDrawer(it) }
+//    )
+//    val educationDrawer = ListDrawer(
+//        listOf(H1Drawer("Education")) + info.education.map { EducationDrawer(it) }
+//    )
+//    val meDrawer = ListDrawer(
+//        listOf(H1Drawer("About me"), MeDrawer(info.me))
+//    )
+//    val projectsDrawer = info.projects ?.let {
+//        ListDrawer(
+//            listOf(H1Drawer("My projects")) + it.map { ProjectDrawer(it) }
+//        )
+//    }
+//    val githubDrawer = info.github ?.let {
+//        ListDrawer(
+//            listOf(H1Drawer("My Github projects")) + GithubDrawer(it, CoroutineScope(Dispatchers.Default + SupervisorJob()))
+//        )
+//    }
+
+    val drawers = listOfNotNull(
+        "About me" to ListDrawer(
+            listOf(H1Drawer("About me"), MeDrawer(info.me))
+        ),
+        info.projects ?.let {
+            "My projects" to ListDrawer(
+                listOf(H1Drawer("My projects")) + it.map { ProjectDrawer(it) }
+            )
+        },
+        info.experience ?.let {
+            "Experience" to ListDrawer(
+                listOf(StyleDrawer(ExperienceDrawer.ExperienceStyles)) + it.map { ExperienceDrawer(it) }
+            )
+        },
+        info.education ?.let {
+            "Education" to ListDrawer(
+                listOf(H1Drawer("Education")) + it.map { EducationDrawer(it) }
+            )
+        },
+        info.github ?.let {
+            "Github" to ListDrawer(
+                listOf(H1Drawer("My Github projects")) + GithubDrawer(it, CoroutineScope(Dispatchers.Default + SupervisorJob()))
+            )
+        }
     )
-    val educationDrawer = ListDrawer(
-        listOf(H1Drawer("Education")) + info.education.map { EducationDrawer(it) }
-    )
-    val meDrawer = ListDrawer(
-        listOf(H1Drawer("About me"), MeDrawer(info.me))
-    )
-    val projectsDrawer = ListDrawer(
-        listOf(H1Drawer("My projects")) + info.projects.map { ProjectDrawer(it) }
-    )
-    val githubDrawer = info.github ?.let {
-        ListDrawer(
-            listOf(H1Drawer("My Github projects")) + GithubDrawer(it, CoroutineScope(Dispatchers.Default + SupervisorJob()))
-        )
-    }
+
     window.onload = {
         globalLogger.i("Hello! All the logs made with my library KSLog. You may find sources of that library here: https://github.com/InsanusMokrassar/KSLog")
         val darkMode = mutableStateOf(false)
-        val centerDrawer = mutableStateOf<Drawer>(meDrawer)
+        val centerDrawer = mutableStateOf<Drawer>(drawers.first().second)
 
         renderComposableInBody {
             Style(if (darkMode.value) ThemeStyleSheet.DARK else ThemeStyleSheet.LIGHT)
@@ -95,28 +124,33 @@ fun main() {
                         ) {
                             darkMode.value = !darkMode.value
                         }
-                        HeaderDrawerElement(
-                            "About me",
-                            meDrawer
-                        )
-                        HeaderDrawerElement(
-                            "My projects",
-                            projectsDrawer
-                        )
-                        HeaderDrawerElement(
-                            "Experience",
-                            experienceDrawer
-                        )
-                        HeaderDrawerElement(
-                            "Education",
-                            educationDrawer
-                        )
-                        githubDrawer ?.let {
-                            HeaderDrawerElement(
-                                "Github",
-                                it
-                            )
+                        drawers.forEach { (title, drawer) ->
+                            HeaderDrawerElement(title, drawer)
                         }
+//                        HeaderDrawerElement(
+//                            "About me",
+//                            meDrawer
+//                        )
+//                        projectsDrawer ?.let {
+//                            HeaderDrawerElement(
+//                                "My projects",
+//                                projectsDrawer
+//                            )
+//                        }
+//                        HeaderDrawerElement(
+//                            "Experience",
+//                            experienceDrawer
+//                        )
+//                        HeaderDrawerElement(
+//                            "Education",
+//                            educationDrawer
+//                        )
+//                        githubDrawer ?.let {
+//                            HeaderDrawerElement(
+//                                "Github",
+//                                it
+//                            )
+//                        }
                     }
                 },
                 centerBuilder = {

@@ -3,7 +3,7 @@ package dev.inmo.resume.client.drawers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import dev.inmo.resume.client.css.ThemeStyleSheet
-import dev.inmo.resume.client.utils.Drawer
+import dev.inmo.resume.client.utils.*
 import dev.inmo.resume.common.models.Github
 import dev.inmo.resume.common.models.getRepositories
 import kotlinx.coroutines.CoroutineScope
@@ -25,16 +25,20 @@ class GithubDrawer(private val github: Github, scope: CoroutineScope) : Drawer {
     private object GHStyles : StyleSheet() {
         val commonContainer by style {
             display(DisplayStyle.Grid)
-            gridTemplateColumns("1fr 1fr")
+            gridTemplateColumns("minmax(0, 1fr) minmax(0, 1fr)")
             columnGap(16.px)
             rowGap(16.px)
+
+            styleOn(SmallScreen or ExtraSmallScreen) {
+                gridTemplateColumns("minmax(0, 1fr)")
+            }
         }
         @OptIn(ExperimentalComposeWebApi::class)
         val itemContainer by style {
             borderRadius(4.px)
             border {
                 color(ThemeStyleSheet.secondaryTextColor.value())
-                width(2.px)
+                width(1.px)
                 style(LineStyle.Solid)
             }
             padding(4.px, 8.px)
@@ -51,7 +55,7 @@ class GithubDrawer(private val github: Github, scope: CoroutineScope) : Drawer {
             }
 
             hover(self) style {
-                property("box-shadow", "0 0 12px")
+                property("box-shadow", "0 0 8px")
                 transform {
                     scale(1.01)
                 }

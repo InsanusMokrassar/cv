@@ -11,7 +11,7 @@ data class Info(
         phoneNumber = "89507969658",
         email = "ovsyannikov.alexey95@gmail.com",
     ),
-    val experience: List<Experience> = listOf(
+    val experience: List<Experience>? = listOf(
         Experience(
             position = "Lead Software Engineer",
             company = "Smart Distribution Network",
@@ -101,7 +101,7 @@ data class Info(
             additional = emptyList()
         )
     ),
-    val education: List<Education> = listOf(
+    val education: List<Education>? = listOf(
         Education(
             grade = "Master",
             university = "Wuhan University (China)",
@@ -122,7 +122,7 @@ data class Info(
             )
         )
     ),
-    val projects: List<Project> = listOf(
+    val projects: List<Project>? = listOf(
         Project(
             title = "tgbotapi",
             link = "https://github.com/InsanusMokrassar/TelegramBotAPI",
