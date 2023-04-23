@@ -28,7 +28,7 @@ object RootAnchorStyleSheet : StyleSheet() {
         }
         styleOn(ExtraSmallScreen) {
             property("width", "unset")
-            maxWidth(extraSmallWidth)
+            margin(0.px, 4.px)
         }
     }
     val header by style {
