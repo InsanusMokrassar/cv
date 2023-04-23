@@ -10,39 +10,40 @@ class ExperienceDrawer(
     private val experience: Experience
 ) : Drawer {
     object ExperienceStyles : StyleSheet() {
-        val container by style {
-            margin(8.px)
+        val title by style {
+            minHeight(2.5.em)
         }
     }
     @Composable
     override fun invoke() {
-        Div({ classes(ExperienceStyles.container) }) {
-            H3 {
-                Text("${experience.position} in ")
-                experience.companyLink ?.let {
-                    A(experience.companyLink) { Text(experience.company) }
-                } ?: Text(experience.company)
-            }
-            P()
-            Span {
-                B { Text("Period:") }
-                Span { Text(" ") }
-                Text(experience.period)
-            }
-            P()
-            Span {
-                B { Text("Location:") }
-                Span { Text(" ") }
-                Text(experience.location)
-            }
-            experience.additional.forEach { (k, v) ->
+        GridDrawer.DrawElement(
+            { experience.companyLink },
+            {
+                H3({ classes(ExperienceStyles.title) }) {
+                    Text("${experience.position} in ${experience.company}")
+                }
+            },
+            {
+                Span {
+                    B { Text("Period:") }
+                    Span { Text(" ") }
+                    Text(experience.period)
+                }
                 P()
                 Span {
-                    B { Text("$k:") }
+                    B { Text("Location:") }
                     Span { Text(" ") }
-                    Text(v)
+                    Text(experience.location)
+                }
+                experience.additional.forEach { (k, v) ->
+                    P()
+                    Span {
+                        B { Text("$k:") }
+                        Span { Text(" ") }
+                        Text(v)
+                    }
                 }
             }
-        }
+        )
     }
 }

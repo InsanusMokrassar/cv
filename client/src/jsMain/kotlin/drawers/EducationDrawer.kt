@@ -14,35 +14,41 @@ class EducationDrawer(
 ) : Drawer {
     @Composable
     override fun invoke() {
-        H3 {
-            Text(education.grade)
-        }
-        P()
-        Span {
-            B { Text("University:") }
-            Span { Text(" ") }
-            Text(education.university)
-        }
-        P()
-        Span {
-            B { Text("Major:") }
-            Span { Text(" ") }
-            Text(education.major)
-        }
-        P()
-        Span {
-            B { Text("Year of graduation:") }
-            Span { Text(" ") }
-            Text(education.yearOfGraduation)
-        }
+        GridDrawer.DrawElement(
+            { null },
+            { H3 { Text(education.grade) } },
+            {
+                Span {
+                    B { Text("University:") }
+                    Span { Text(" ") }
+                    Text(education.university)
+                }
+                P()
+                Span {
+                    B { Text("Major:") }
+                    Span { Text(" ") }
+                    Text(education.major)
+                }
+                P()
+                Span {
+                    B { Text("Year of graduation:") }
+                    Span { Text(" ") }
+                    Text(education.yearOfGraduation)
+                }
 
-        education.additional.forEach { (k, v) ->
-            P()
-            Span {
-                B { Text("$k:") }
-                Span { Text(" ") }
-                Text(v)
+                education.additional.forEach { (k, v) ->
+                    P()
+                    Span {
+                        B { Text("$k:") }
+                        Span { Text(" ") }
+                        Text(v)
+                    }
+                }
             }
-        }
+        )
+//        H3 {
+//            Text(education.grade)
+//        }
+//        P()
     }
 }

@@ -10,11 +10,7 @@ kotlin {
         commonMain {
             dependencies {
                 api libs.kslog
-            }
-        }
-        jsMain {
-            dependencies {
-                api libs.kjsuikit
+                api libs.kotlin.coroutines
             }
         }
     }

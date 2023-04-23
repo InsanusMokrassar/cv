@@ -55,6 +55,7 @@ object CommonStyleSheet : StyleSheet() {
                 defaultTimingFunction(AnimationTimingFunction.Ease)
                 defaultDuration(0.25.s)
             }
+            property("scrollbar-gutter", "stable")
         }
 
         selector("body") style {
@@ -62,7 +63,7 @@ object CommonStyleSheet : StyleSheet() {
         }
 
         selector("a") style {
-            color(ThemeStyleSheet.secondaryTextColor.value())
+            color(ThemeStyleSheet.neutralTextColor.value())
         }
     }
 }

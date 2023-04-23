@@ -5,11 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import dev.inmo.kslog.common.i
 import dev.inmo.resume.client.containers.AnchorContainer
 import dev.inmo.resume.client.containers.Box
-import dev.inmo.resume.client.css.AnchorStyleSheet
-import dev.inmo.resume.client.css.CommonStyleSheet
-import dev.inmo.resume.client.css.HeaderStyleSheet
-import dev.inmo.resume.client.css.RootAnchorStyleSheet
-import dev.inmo.resume.client.css.ThemeStyleSheet
+import dev.inmo.resume.client.css.*
 import dev.inmo.resume.client.drawers.*
 import dev.inmo.resume.client.utils.Drawer
 import dev.inmo.resume.common.globalLogger
@@ -41,26 +37,6 @@ private fun HeaderElement(
 fun main() {
     val info = Info()
 
-//    val experienceDrawer = ListDrawer(
-//        listOf(H1Drawer("Experience")) + info.experience.map { ExperienceDrawer(it) }
-//    )
-//    val educationDrawer = ListDrawer(
-//        listOf(H1Drawer("Education")) + info.education.map { EducationDrawer(it) }
-//    )
-//    val meDrawer = ListDrawer(
-//        listOf(H1Drawer("About me"), MeDrawer(info.me))
-//    )
-//    val projectsDrawer = info.projects ?.let {
-//        ListDrawer(
-//            listOf(H1Drawer("My projects")) + it.map { ProjectDrawer(it) }
-//        )
-//    }
-//    val githubDrawer = info.github ?.let {
-//        ListDrawer(
-//            listOf(H1Drawer("My Github projects")) + GithubDrawer(it, CoroutineScope(Dispatchers.Default + SupervisorJob()))
-//        )
-//    }
-
     val drawers = listOfNotNull(
         "About me" to ListDrawer(
             listOf(H1Drawer("About me"), MeDrawer(info.me))
@@ -72,12 +48,27 @@ fun main() {
         },
         info.experience ?.let {
             "Experience" to ListDrawer(
-                listOf(StyleDrawer(ExperienceDrawer.ExperienceStyles)) + it.map { ExperienceDrawer(it) }
+                H1Drawer("Experience"),
+                StyleDrawer(ExperienceDrawer.ExperienceStyles),
+                it.map { ExperienceDrawer(it) }.let {
+                    Drawer {
+                        GridDrawer.DrawGrid {
+                            it.forEach { it.invoke() }
+                        }
+                    }
+                },
             )
         },
         info.education ?.let {
             "Education" to ListDrawer(
-                listOf(H1Drawer("Education")) + it.map { EducationDrawer(it) }
+                H1Drawer("Education"),
+                it.map { EducationDrawer(it) }.let {
+                    Drawer {
+                        GridDrawer.DrawGrid {
+                            it.forEach { it.invoke() }
+                        }
+                    }
+                }
             )
         },
         info.github ?.let {
@@ -99,6 +90,7 @@ fun main() {
             Style(AnchorStyleSheet)
             Style(RootAnchorStyleSheet)
             Style(HeaderStyleSheet)
+            Style(GridElementsStyleSheet)
 
             @Composable
             fun HeaderDrawerElement(

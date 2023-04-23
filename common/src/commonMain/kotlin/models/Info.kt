@@ -16,7 +16,7 @@ data class Info(
             position = "Lead Software Engineer",
             company = "Smart Distribution Network",
             companyLink = "https://www.smart-dn.ru",
-            period = "September 2021 – currently working",
+            period = "09.2021 – currently working",
             location = "Remote",
             additional = emptyList()
         ),
@@ -24,7 +24,7 @@ data class Info(
             position = "Middle+ Android developer",
             company = "Tinkoff",
             companyLink = "https://www.tinkoff.ru",
-            period = "May 2021 – August 2021",
+            period = "05.2021 – 08.2021",
             location = "Remote",
             additional = emptyList()
         ),
@@ -32,7 +32,7 @@ data class Info(
             position = "Senior Software Engineer",
             company = "Smart Distribution Network",
             companyLink = "https://www.smart-dn.ru",
-            period = "October 2018 – May 2021",
+            period = "11.2018 – 05.2021",
             location = "Remote",
             additional = emptyList()
         ),
@@ -40,7 +40,7 @@ data class Info(
             position = "Mentor (GSoC 2020 internship)",
             company = "XWiki Project",
             companyLink = "https://www.xwiki.org/",
-            period = "March 2020 – September 2020",
+            period = "03.2020 – 09.2020",
             location = "Remote (China, Wuhan City), Remote (Russia, Omsk)",
             additional = emptyList()
         ),
@@ -48,7 +48,7 @@ data class Info(
             position = "Mentor (GSoC 2019 internship)",
             company = "XWiki Project",
             companyLink = "https://www.xwiki.org/",
-            period = "March 2019 – September 2019",
+            period = "03.2019 – 09.2019",
             location = "Remote (China, Wuhan City), Remote (Russia, Omsk)",
             additional = emptyList()
         ),
@@ -56,7 +56,7 @@ data class Info(
             position = "Mentor (GSoC 2018 internship)",
             company = "XWiki Project",
             companyLink = "https://www.xwiki.org/",
-            period = "March 2018 – September 2018",
+            period = "03.2018 – 09.2018",
             location = "Remote (China, Wuhan City)",
             additional = emptyList()
         ),
@@ -64,7 +64,7 @@ data class Info(
             position = "Android developer (GSoC 2018 internship)",
             company = "XWiki Project",
             companyLink = "https://www.xwiki.org/",
-            period = "May 2018 - August 2018",
+            period = "05.2018 - 08.2018",
             location = "Remote (China, Wuhan City)",
             additional = emptyList()
         ),
@@ -72,7 +72,7 @@ data class Info(
             position = "Android developer",
             company = "Andy OS, Inc.",
             companyLink = "https://www.linkedin.com/company/8179828/",
-            period = "December 2016 - March 2018",
+            period = "12.2016 - 03.2018",
             location = "Russia, Omsk city",
             additional = emptyList()
         ),
@@ -80,7 +80,7 @@ data class Info(
             position = "Junior engineer",
             company = "LLC Hello World! Technologies (HWdTech LLC)",
             companyLink = "https://www.linkedin.com/company/17952851/",
-            period = "March 2016 - August 2016",
+            period = "03.2016 - 08.2016",
             location = "Russia, Omsk city",
             additional = emptyList()
         ),
@@ -88,7 +88,7 @@ data class Info(
             position = "Intern",
             company = "LLC Hello World! Technologies (HWdTech LLC)",
             companyLink = "https://www.linkedin.com/company/17952851/",
-            period = "December 2015 - March 2016",
+            period = "12.2015 - 03.2016",
             location = "Russia, Omsk city",
             additional = emptyList()
         ),
@@ -96,12 +96,21 @@ data class Info(
             position = "Intern",
             company = "7bits",
             companyLink = "https://www.linkedin.com/company/2559736/",
-            period = "July 2015 - September 2015",
+            period = "07.2015 - 09.2015",
             location = "Russia, Omsk city",
             additional = emptyList()
         )
     ),
     val education: List<Education>? = listOf(
+        Education(
+            grade = "Bachelor",
+            university = "Omsk State University (Russia)",
+            major = "Informatics and computer science",
+            yearOfGraduation = "2017",
+            additional = listOf(
+                "Document registration number" to "7117.0096"
+            )
+        ),
         Education(
             grade = "Master",
             university = "Wuhan University (China)",
@@ -110,15 +119,6 @@ data class Info(
             additional = listOf(
                 "Registration number of Graduation Certificate" to "104869201902000047",
                 "Registration number of Degree Certificate" to "1048632019203277"
-            )
-        ),
-        Education(
-            grade = "Bachelor",
-            university = "Omsk State University (Russia)",
-            major = "Informatics and computer science",
-            yearOfGraduation = "2017",
-            additional = listOf(
-                "Document registration number" to "7117.0096"
             )
         )
     ),
@@ -130,6 +130,9 @@ data class Info(
         )
     ),
     val github: Github? = Github(
-        "InsanusMokrassar"
+        "InsanusMokrassar",
+        sortBy = Github.SortBy.STARS,
+        sort = Github.SortOrder.DESC,
+        count = 20
     )
 )
