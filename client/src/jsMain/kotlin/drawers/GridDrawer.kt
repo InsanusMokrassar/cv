@@ -15,8 +15,17 @@ class GridDrawer(
         val url: String?,
         val title: String,
         val description: String?,
-        val icon: String?
-    )
+        val icons: List<String>
+    ) {
+        constructor(
+            url: String?,
+            title: String,
+            description: String?,
+            vararg icons: String?
+        ) : this(
+            url, title, description, icons.filterNotNull()
+        )
+    }
 
     @Composable
     override fun invoke() {
@@ -104,7 +113,9 @@ class GridDrawer(
             { it.url },
             { H4 { Text(it.title) } },
             { it.description ?.let { description -> Text(description) } },
-            { it.icon ?.let { iconText -> Text(iconText) } }
+            (0 until (data.maxOfOrNull { it.icons.size } ?: 0)).map { i ->
+                @Composable { it.icons.getOrNull(i) ?.let { iconText -> Text(iconText) } }
+            }
         )
     }
 }

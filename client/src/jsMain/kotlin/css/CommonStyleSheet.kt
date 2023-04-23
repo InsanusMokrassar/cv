@@ -1,17 +1,7 @@
 package dev.inmo.resume.client.css
 
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
-import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.StyleSheet
-import org.jetbrains.compose.web.css.backgroundColor
-import org.jetbrains.compose.web.css.color
-import org.jetbrains.compose.web.css.cursor
-import org.jetbrains.compose.web.css.flex
-import org.jetbrains.compose.web.css.margin
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.s
-import org.jetbrains.compose.web.css.transitions
-import org.jetbrains.compose.web.css.value
+import org.jetbrains.compose.web.css.*
 
 @OptIn(ExperimentalComposeWebApi::class)
 object CommonStyleSheet : StyleSheet() {
@@ -50,6 +40,7 @@ object CommonStyleSheet : StyleSheet() {
         root style {
             backgroundColor(ThemeStyleSheet.backgroundNeutralColor.value())
             color(ThemeStyleSheet.neutralTextColor.value())
+            fontFamily("Roboto", "system-ui")
             transitions {
                 properties("color", "background-color")
                 defaultTimingFunction(AnimationTimingFunction.Ease)

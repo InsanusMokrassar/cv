@@ -123,6 +123,10 @@ data class Github(
         val webUrl: String? = null,
         @SerialName("stargazers_count")
         val stars: Int? = null,
+        @SerialName("open_issues_count")
+        val openIssues: Int? = null,
+        @SerialName("forks_count")
+        val forks: Int? = null,
         val language: String? = null,
         val license: License? = null,
         val topics: List<String> = emptyList(),

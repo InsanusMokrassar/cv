@@ -8,8 +8,11 @@ import dev.inmo.resume.client.containers.Box
 import dev.inmo.resume.client.css.*
 import dev.inmo.resume.client.drawers.*
 import dev.inmo.resume.client.utils.Drawer
+import dev.inmo.resume.client.utils.getUrlParameter
+import dev.inmo.resume.client.utils.setUrlParameter
 import dev.inmo.resume.common.globalLogger
 import dev.inmo.resume.common.models.Info
+import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +42,7 @@ fun main() {
 
     val drawers = listOfNotNull(
         "About me" to ListDrawer(
-            listOf(H1Drawer("About me"), MeDrawer(info.me))
+            MeDrawer(info.me)
         ),
         info.projects ?.let {
             "My projects" to ListDrawer(
@@ -77,10 +80,11 @@ fun main() {
             )
         }
     )
+    val darkMode = mutableStateOf(getUrlParameter("dm") != null)
 
     window.onload = {
+        document.title = info.me.name
         globalLogger.i("Hello! All the logs made with my library KSLog. You may find sources of that library here: https://github.com/InsanusMokrassar/KSLog")
-        val darkMode = mutableStateOf(false)
         val centerDrawer = mutableStateOf<Drawer>(drawers.first().second)
 
         renderComposableInBody {
@@ -115,34 +119,11 @@ fun main() {
                             darkMode.value
                         ) {
                             darkMode.value = !darkMode.value
+                            setUrlParameter("dm", "".takeIf { darkMode.value })
                         }
                         drawers.forEach { (title, drawer) ->
                             HeaderDrawerElement(title, drawer)
                         }
-//                        HeaderDrawerElement(
-//                            "About me",
-//                            meDrawer
-//                        )
-//                        projectsDrawer ?.let {
-//                            HeaderDrawerElement(
-//                                "My projects",
-//                                projectsDrawer
-//                            )
-//                        }
-//                        HeaderDrawerElement(
-//                            "Experience",
-//                            experienceDrawer
-//                        )
-//                        HeaderDrawerElement(
-//                            "Education",
-//                            educationDrawer
-//                        )
-//                        githubDrawer ?.let {
-//                            HeaderDrawerElement(
-//                                "Github",
-//                                it
-//                            )
-//                        }
                     }
                 },
                 centerBuilder = {

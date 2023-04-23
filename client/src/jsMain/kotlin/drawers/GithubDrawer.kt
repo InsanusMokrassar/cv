@@ -31,7 +31,9 @@ class GithubDrawer(private val github: Github, scope: CoroutineScope) : Drawer {
                     it.webUrl,
                     it.title ?: it.name,
                     it.description,
-                    it.stars ?.takeIf { it > 0 } ?.let { "☆$it" }
+                    it.stars ?.takeIf { it > 0 } ?.let { "☆ $it" },
+                    it.language,
+                    it.forks ?.takeIf { it > 0 } ?.let { "⑂ $it" } ?: it.openIssues ?.takeIf { it > 0 } ?.let { "\uD83D\uDF8B $it" }
                 )
             }
         )
