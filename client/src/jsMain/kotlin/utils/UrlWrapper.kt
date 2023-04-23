@@ -16,5 +16,5 @@ fun setUrlParameter(parameterName: String, value: String?) {
     value ?.let {
         params.set(parameterName, value)
     } ?: params.delete(parameterName)
-    window.history.pushState(null, document.title, "${window.location.origin.dropSuffix("/")}/${window.location.pathname.dropSuffix("?")}?${params}${window.location.hash.takeIf { it.isNotBlank() } ?.let { "#$it" } ?: ""}")
+    window.history.pushState(null, document.title, "${window.location.origin.removeSuffix("/")}/${window.location.pathname.removeSuffix("?")}?${params}${window.location.hash.takeIf { it.isNotBlank() } ?.let { "#$it" } ?: ""}")
 }
