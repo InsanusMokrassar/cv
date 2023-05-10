@@ -8,8 +8,8 @@ import dev.inmo.resume.client.containers.Box
 import dev.inmo.resume.client.css.*
 import dev.inmo.resume.client.drawers.*
 import dev.inmo.resume.client.utils.Drawer
-import dev.inmo.resume.client.utils.getUrlParameter
-import dev.inmo.resume.client.utils.setUrlParameter
+import dev.inmo.resume.client.utils.darkModeSetting
+import dev.inmo.resume.client.utils.setSetting
 import dev.inmo.resume.common.globalLogger
 import dev.inmo.resume.common.models.Info
 import kotlinx.browser.document
@@ -80,7 +80,7 @@ fun main() {
             )
         }
     )
-    val darkMode = mutableStateOf(getUrlParameter("dm") != null)
+    val darkMode = mutableStateOf(darkModeSetting)
 
     window.onload = {
         document.title = info.me.name
@@ -119,7 +119,7 @@ fun main() {
                             darkMode.value
                         ) {
                             darkMode.value = !darkMode.value
-                            setUrlParameter("dm", "".takeIf { darkMode.value })
+                            darkModeSetting = darkMode.value
                         }
                         drawers.forEach { (title, drawer) ->
                             HeaderDrawerElement(title, drawer)
