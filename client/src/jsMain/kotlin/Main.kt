@@ -24,7 +24,7 @@ import org.jetbrains.compose.web.renderComposableInBody
 
 @Composable
 private fun HeaderElement(
-    title: String,
+    titleContent: @Composable () -> Unit,
     isActive: Boolean,
     onClick: () -> Unit
 ) {
@@ -33,8 +33,17 @@ private fun HeaderElement(
         classes(CommonStyleSheet.cursorPointer, HeaderStyleSheet.element)
         onClick { onClick() }
     }) {
-        Text(title)
+        titleContent()
     }
+}
+
+@Composable
+private fun HeaderElement(
+    title: String,
+    isActive: Boolean,
+    onClick: () -> Unit
+) {
+    HeaderElement({ Text(title) }, isActive, onClick)
 }
 
 fun main() {
@@ -115,7 +124,11 @@ fun main() {
                         classes(CommonStyleSheet.Width.expand, HeaderStyleSheet.container, RootAnchorStyleSheet.header)
                     }) {
                         HeaderElement(
-                            "Dark mode",
+                            if (darkMode.value) {
+                                "\uD83C\uDF11"
+                            } else {
+                                "\uD83C\uDF3B"
+                            },
                             darkMode.value
                         ) {
                             darkMode.value = !darkMode.value
