@@ -9,7 +9,6 @@ import dev.inmo.resume.client.css.*
 import dev.inmo.resume.client.drawers.*
 import dev.inmo.resume.client.utils.Drawer
 import dev.inmo.resume.client.utils.darkModeSetting
-import dev.inmo.resume.client.utils.setSetting
 import dev.inmo.resume.common.globalLogger
 import dev.inmo.resume.common.models.Info
 import kotlinx.browser.document
@@ -47,7 +46,7 @@ private fun HeaderElement(
 }
 
 fun main() {
-    val info = Info()
+    val info = Info(projects = null)
 
     val drawers = listOfNotNull(
         "About me" to ListDrawer(
@@ -89,12 +88,25 @@ fun main() {
             )
         }
     )
+    val singlePageDrawer = if (info.useAllInOnePage) {
+        val divider = DividerDrawer()
+        ListDrawer(
+            drawers.flatMap {
+                listOf(
+                    divider,
+                    it.second
+                )
+            }.drop(1)
+        )
+    } else {
+        null
+    }
     val darkMode = mutableStateOf(darkModeSetting)
 
     window.onload = {
         document.title = info.me.name
         globalLogger.i("Hello! All the logs made with my library KSLog. You may find sources of that library here: https://github.com/InsanusMokrassar/KSLog")
-        val centerDrawer = mutableStateOf<Drawer>(drawers.first().second)
+        val centerDrawer = mutableStateOf<Drawer>(singlePageDrawer ?: drawers.first().second)
 
         renderComposableInBody {
             Style(if (darkMode.value) ThemeStyleSheet.DARK else ThemeStyleSheet.LIGHT)
@@ -133,6 +145,9 @@ fun main() {
                         ) {
                             darkMode.value = !darkMode.value
                             darkModeSetting = darkMode.value
+                        }
+                        singlePageDrawer ?.let {
+                            HeaderDrawerElement("Single page", it)
                         }
                         drawers.forEach { (title, drawer) ->
                             HeaderDrawerElement(title, drawer)

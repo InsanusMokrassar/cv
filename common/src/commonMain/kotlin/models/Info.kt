@@ -134,5 +134,6 @@ data class Info(
         sortBy = Github.SortBy.STARS,
         sort = Github.SortOrder.DESC,
         count = 20
-    )
+    ),
+    val useAllInOnePage: Boolean = true
 )

@@ -11,22 +11,24 @@ object GridElementsStyleSheet : StyleSheet() {
     val commonContainer by style {
         display(DisplayStyle.Grid)
         gridTemplateColumns("minmax(0, 1fr) minmax(0, 1fr)")
-        columnGap(16.px)
-        rowGap(16.px)
+        columnGap(4.mm)
+        rowGap(4.mm)
 
         styleOn(SmallScreen or ExtraSmallScreen) {
             gridTemplateColumns("minmax(0, 1fr)")
         }
+
+        padding(4.mm, 0.mm)
     }
     @OptIn(ExperimentalComposeWebApi::class)
     val itemContainer by style {
-        borderRadius(4.px)
+        borderRadius(1.mm)
         border {
             color(ThemeStyleSheet.neutralTextColor.value())
-            width(1.px)
+            width(0.25.mm)
             style(LineStyle.Solid)
         }
-        padding(4.px, 8.px)
+        padding(1.mm, 2.mm)
         display(DisplayStyle.Grid)
         gridTemplateColumns("1fr")
         gridTemplateRows("auto 1fr auto")
@@ -55,6 +57,6 @@ object GridElementsStyleSheet : StyleSheet() {
     }
     val linkIcon by style {
         textAlign("center")
-        padding(8.px)
+        padding(2.mm)
     }
 }
