@@ -53,14 +53,6 @@ data class Info(
             additional = emptyList()
         ),
         Experience(
-            position = "Mentor (GSoC 2018 internship)",
-            company = "XWiki Project",
-            companyLink = "https://www.xwiki.org/",
-            period = "03.2018 – 09.2018",
-            location = "Remote (China, Wuhan City)",
-            additional = emptyList()
-        ),
-        Experience(
             position = "Android developer (GSoC 2018 internship)",
             company = "XWiki Project",
             companyLink = "https://www.xwiki.org/",
