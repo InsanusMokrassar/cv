@@ -1,14 +1,14 @@
 [versions]
 
 kotlin = "1.8.20"
-kotlin-coroutines = "1.6.4"
-kotlin-serialization = "1.5.0"
-dokka = "1.8.10"
+kotlin-coroutines = "1.7.1"
+kotlin-serialization = "1.5.1"
+dokka = "1.8.20"
 
 compose = "1.4.0"
 
 kslog = "1.1.1"
-kjsuikit = "0.6.2"
+kjsuikit = "0.7.0"
 
 dexcount = "4.0.0"
 junit_version = "4.12"
