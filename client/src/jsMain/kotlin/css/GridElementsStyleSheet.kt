@@ -11,24 +11,24 @@ object GridElementsStyleSheet : StyleSheet() {
     val commonContainer by style {
         display(DisplayStyle.Grid)
         gridTemplateColumns("minmax(0, 1fr) minmax(0, 1fr)")
-        columnGap(4.mm)
-        rowGap(4.mm)
+        columnGap(Sizes.Paddings.medium)
+        rowGap(Sizes.Paddings.medium)
 
         styleOn(SmallScreen or ExtraSmallScreen) {
             gridTemplateColumns("minmax(0, 1fr)")
         }
 
-        padding(4.mm, 0.mm)
+        padding(Sizes.Paddings.medium, Sizes.Paddings.none)
     }
     @OptIn(ExperimentalComposeWebApi::class)
     val itemContainer by style {
-        borderRadius(1.mm)
+        borderRadius(Sizes.BorderRadius.medium)
         border {
             color(ThemeStyleSheet.neutralTextColor.value())
-            width(0.25.mm)
+            width(Sizes.Border.xSmall)
             style(LineStyle.Solid)
         }
-        padding(1.mm, 2.mm)
+        padding(Sizes.Paddings.xSmall, Sizes.Paddings.small)
         display(DisplayStyle.Grid)
         gridTemplateColumns("1fr")
         gridTemplateRows("auto 1fr auto")
@@ -40,6 +40,27 @@ object GridElementsStyleSheet : StyleSheet() {
                 duration(0.1.s)
                 timingFunction(AnimationTimingFunction.Linear)
             }
+        }
+    }
+    val itemTitleContainer by style {
+        display(DisplayStyle.Flex)
+        flexDirection(FlexDirection.Row)
+        alignItems(AlignItems.Center)
+        gap(Sizes.Paddings.small)
+    }
+    @OptIn(ExperimentalComposeWebApi::class)
+    val itemTitleImg by style {
+        property("object-fit", "contain")
+        width(Sizes.ImgPreview.large)
+        height(Sizes.ImgPreview.large)
+
+        styleOn(ExtraSmallScreen) {
+            maxWidth(Sizes.ImgPreview.medium)
+            maxHeight(Sizes.ImgPreview.medium)
+        }
+
+        filter {
+            dropShadow(offsetX = 2.px, offsetY = 2.px, blurRadius = 5.px, color = rgba(0, 0, 0, 0.4f))
         }
     }
     @OptIn(ExperimentalComposeWebApi::class)
@@ -57,6 +78,6 @@ object GridElementsStyleSheet : StyleSheet() {
     }
     val linkIcon by style {
         textAlign("center")
-        padding(2.mm)
+        padding(Sizes.Paddings.small)
     }
 }

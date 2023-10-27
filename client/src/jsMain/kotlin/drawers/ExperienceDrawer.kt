@@ -10,16 +10,13 @@ class ExperienceDrawer(
     private val experience: Experience
 ) : Drawer {
     object ExperienceStyles : StyleSheet() {
-        val title by style {
-            minHeight(2.5.em)
-        }
     }
     @Composable
     override fun invoke() {
         GridDrawer.DrawElement(
             { experience.companyLink },
             {
-                H3({ classes(ExperienceStyles.title) }) {
+                H3 {
                     Text("${experience.position} in ${experience.company}")
                 }
             },
@@ -43,7 +40,8 @@ class ExperienceDrawer(
                         Text(v)
                     }
                 }
-            }
+            },
+            { experience.companyImgLink }
         )
     }
 }

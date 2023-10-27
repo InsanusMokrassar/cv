@@ -6,8 +6,9 @@ import kotlinx.serialization.Serializable
 data class Experience(
     val position: String,
     val company: String,
-    val companyLink: String?,
     val period: String,
     val location: String,
-    val additional: List<Pair<String, String>> = emptyList()
+    val additional: List<Pair<String, String>> = emptyList(),
+    val companyLink: String? = null,
+    val companyImgLink: String? = null
 )

@@ -15,10 +15,11 @@ data class Info(
         Experience(
             position = "Lead Software Engineer",
             company = "Smart Distribution Network",
-            companyLink = "https://www.smart-dn.ru",
             period = "09.2021 – currently working",
             location = "Remote",
-            additional = emptyList()
+            additional = emptyList(),
+            companyLink = "https://www.smart-dn.ru",
+            companyImgLink = "img/company_sdn.svg"
         ),
         Experience(
             position = "Middle+ Android developer",
@@ -26,7 +27,8 @@ data class Info(
             companyLink = "https://www.tinkoff.ru",
             period = "05.2021 – 08.2021",
             location = "Remote",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_tinkoff.svg"
         ),
         Experience(
             position = "Senior Software Engineer",
@@ -34,7 +36,8 @@ data class Info(
             companyLink = "https://www.smart-dn.ru",
             period = "11.2018 – 05.2021",
             location = "Remote",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_sdn.svg"
         ),
         Experience(
             position = "Mentor (GSoC 2020 internship)",
@@ -42,7 +45,8 @@ data class Info(
             companyLink = "https://www.xwiki.org/",
             period = "03.2020 – 09.2020",
             location = "Remote (China, Wuhan City), Remote (Russia, Omsk)",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_xwiki.svg"
         ),
         Experience(
             position = "Mentor (GSoC 2019 internship)",
@@ -50,7 +54,8 @@ data class Info(
             companyLink = "https://www.xwiki.org/",
             period = "03.2019 – 09.2019",
             location = "Remote (China, Wuhan City), Remote (Russia, Omsk)",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_xwiki.svg"
         ),
         Experience(
             position = "Android developer (GSoC 2018 internship)",
@@ -58,7 +63,8 @@ data class Info(
             companyLink = "https://www.xwiki.org/",
             period = "05.2018 - 08.2018",
             location = "Remote (China, Wuhan City)",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_xwiki.svg"
         ),
         Experience(
             position = "Android developer",
@@ -66,7 +72,8 @@ data class Info(
             companyLink = "https://www.linkedin.com/company/8179828/",
             period = "12.2016 - 03.2018",
             location = "Russia, Omsk city",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_andy.webp"
         ),
         Experience(
             position = "Junior engineer",
@@ -74,7 +81,8 @@ data class Info(
             companyLink = "https://www.linkedin.com/company/17952851/",
             period = "03.2016 - 08.2016",
             location = "Russia, Omsk city",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_hwdtech.svg"
         ),
         Experience(
             position = "Intern",
@@ -82,7 +90,8 @@ data class Info(
             companyLink = "https://www.linkedin.com/company/17952851/",
             period = "12.2015 - 03.2016",
             location = "Russia, Omsk city",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_hwdtech.svg"
         ),
         Experience(
             position = "Intern",
@@ -90,7 +99,8 @@ data class Info(
             companyLink = "https://www.linkedin.com/company/2559736/",
             period = "07.2015 - 09.2015",
             location = "Russia, Omsk city",
-            additional = emptyList()
+            additional = emptyList(),
+            companyImgLink = "img/company_7bits.svg"
         )
     ),
     val education: List<Education>? = listOf(

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import dev.inmo.resume.client.css.GridElementsStyleSheet
 import dev.inmo.resume.client.utils.Drawer
 import org.jetbrains.compose.web.dom.*
-import org.w3c.dom.HTMLAnchorElement
 import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLParagraphElement
 
@@ -36,9 +35,10 @@ class GridDrawer(
         @Composable
         fun DrawElement(
             link: @Composable () -> String?,
-            titleDrawer: @Composable ElementScope<HTMLAnchorElement>.() -> Unit,
+            titleDrawer: @Composable ElementScope<HTMLDivElement>.() -> Unit,
             descriptionDrawer: @Composable ElementScope<HTMLParagraphElement>.() -> Unit = {},
             iconsDrawers: Iterable<@Composable ElementScope<HTMLDivElement>.() -> Unit> = emptyList(),
+            titleImgLink: @Composable ElementScope<HTMLDivElement>.() -> String? = { null },
         ) {
             val href = link()
             A(
@@ -50,7 +50,14 @@ class GridDrawer(
                     }
                 }
             ) {
-                titleDrawer()
+                Div({ classes(GridElementsStyleSheet.itemTitleContainer) }) {
+                    titleImgLink() ?.let {
+                        Img(src = it) {
+                            classes(GridElementsStyleSheet.itemTitleImg)
+                        }
+                    }
+                    titleDrawer()
+                }
                 P {
                     descriptionDrawer()
                 }
@@ -65,10 +72,11 @@ class GridDrawer(
         @Composable
         fun DrawElement(
             link: @Composable () -> String?,
-            titleDrawer: @Composable ElementScope<HTMLAnchorElement>.() -> Unit,
+            titleDrawer: @Composable ElementScope<HTMLDivElement>.() -> Unit,
             descriptionDrawer: @Composable ElementScope<HTMLParagraphElement>.() -> Unit = {},
+            titleImgLink: @Composable ElementScope<HTMLDivElement>.() -> String? = { null },
             vararg iconsDrawers: @Composable ElementScope<HTMLDivElement>.() -> Unit,
-        ) = DrawElement(link, titleDrawer, descriptionDrawer, iconsDrawers.toList())
+        ) = DrawElement(link, titleDrawer, descriptionDrawer, iconsDrawers.toList(), titleImgLink)
 
         @Composable
         fun DrawGrid(
@@ -82,9 +90,10 @@ class GridDrawer(
         fun <T> DrawGrid(
             data: Iterable<T>,
             link: @Composable (T) -> String?,
-            titleDrawer: @Composable ElementScope<HTMLAnchorElement>.(T) -> Unit,
+            titleDrawer: @Composable ElementScope<HTMLDivElement>.(T) -> Unit,
             descriptionDrawer: @Composable ElementScope<HTMLParagraphElement>.(T) -> Unit = {},
             iconsDrawers: Iterable<@Composable ElementScope<HTMLDivElement>.(T) -> Unit> = emptyList(),
+            titleImgLink: @Composable ElementScope<HTMLDivElement>.(T) -> String? = { null },
         ) {
             DrawGrid {
                 data.forEach { element ->
@@ -93,6 +102,7 @@ class GridDrawer(
                         { titleDrawer(element) },
                         { descriptionDrawer(element) },
                         iconsDrawers.map { { it(element) } },
+                        { titleImgLink(element) }
                     )
                 }
             }
@@ -101,10 +111,11 @@ class GridDrawer(
         fun <T> DrawGrid(
             data: Iterable<T>,
             link: @Composable (T) -> String?,
-            titleDrawer: @Composable ElementScope<HTMLAnchorElement>.(T) -> Unit,
+            titleDrawer: @Composable ElementScope<HTMLDivElement>.(T) -> Unit,
             descriptionDrawer: @Composable ElementScope<HTMLParagraphElement>.(T) -> Unit = {},
+            titleImgLink: @Composable ElementScope<HTMLDivElement>.(T) -> String? = { null },
             vararg iconsDrawers: @Composable ElementScope<HTMLDivElement>.(T) -> Unit ,
-        ) = DrawGrid(data, link, titleDrawer, descriptionDrawer, iconsDrawers.toList())
+        ) = DrawGrid(data, link, titleDrawer, descriptionDrawer, iconsDrawers.toList(), titleImgLink)
         @Composable
         fun DrawGrid(
             data: Iterable<Element>
