@@ -14,15 +14,17 @@ class GridDrawer(
         val url: String?,
         val title: String,
         val description: String?,
+        val elementIcon: String?,
         val icons: List<String>
     ) {
         constructor(
             url: String?,
             title: String,
             description: String?,
+            elementIcon: String?,
             vararg icons: String?
         ) : this(
-            url, title, description, icons.filterNotNull()
+            url, title, description, elementIcon, icons.filterNotNull()
         )
     }
 
@@ -126,7 +128,8 @@ class GridDrawer(
             { it.description ?.let { description -> Text(description) } },
             (0 until (data.maxOfOrNull { it.icons.size } ?: 0)).map { i ->
                 @Composable { it.icons.getOrNull(i) ?.let { iconText -> Text(iconText) } }
-            }
+            },
+            { it.elementIcon }
         )
     }
 }

@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 data class Project(
     val title: String,
     val link: String,
-    val description: String? = null
+    val description: String? = null,
+    val icon: String? = null
 )
